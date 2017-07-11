@@ -1,6 +1,6 @@
 {
   "name": "omrs-checkmobi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Checkmobi NPM module",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/omrsmeh/omrs-checkmobi.git"
+    "url": "git://github.com/aakashjain/omrs-checkmobi.git"
   },
   "keywords": [
     "checkmobi",
@@ -21,7 +21,7 @@
     "request": "2.74.0"
   },
   "engines": {
-    "node": "5.6.0"
+    "node": ">=5.6.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
