@@ -17,7 +17,7 @@ describe('#Getting Number Info', () => {
     cb.phoneInformation(null, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid phone number format (Only E164 format accepted).')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -26,7 +26,7 @@ describe('#Getting Number Info', () => {
     cb.phoneInformation('+0199', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid phone number format (Only E164 format accepted).')
+      response.should.equal('Invalid phone number. Phone number should be provided into E.164 format')
       done();
     });
   });
@@ -35,7 +35,7 @@ describe('#Getting Number Info', () => {
     cb.phoneInformation('+135980654', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid phone number format (Only E164 format accepted).')
+      response.should.equal('Invalid phone number. Phone number should be provided into E.164 format')
       done();
     });
   });
@@ -106,7 +106,7 @@ describe('#Get Message Information', () => {
       return done();
     }
 
-    cb.getMessageInformation(CHECKMOBI_MSG_ID, (error, response) => {
+    cb.getMessageInformation('MSG-69A8F48B-0C5D-4AA0-A444-2BE016B2F80B', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
       response.should.equal('Resource cannot be found');
@@ -259,7 +259,7 @@ describe('#Send SMS', () => {
     cb.sendMessage({"to": 'just', "text": 'test'}, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid phone number format (Only E164 format accepted).')
+      response.should.equal('Invalid phone number. Phone number should be provided into E.164 format')
       done();
     });
   });
@@ -292,7 +292,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone(null, null, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Required information missing')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -301,7 +301,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone('', null, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Required information missing')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -310,7 +310,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone(null, '', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Required information missing')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -319,7 +319,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone('', '', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Required information missing')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -328,7 +328,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone({}, {}, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid Request')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -337,7 +337,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone(CHECKMOBI_SMS_ID, '', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Required information missing')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -346,7 +346,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone('SMS-BD34D432-3E3B-4EF3-97B5-A4417340BB49', '68768', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid verification type, allowed sms, ivr, cli, reverse_cli')
+      response.should.equal('Invalid validation type. Allowed (sms, ivr, cli, reverse_cli)')
       done();
     });
   });
@@ -355,7 +355,7 @@ describe('#Validate Phone Number', () => {
     cb.validatePhone(CHECKMOBI_SMS_ID, 'sms', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Invalid phone number format (Only E164 format accepted).')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -379,7 +379,7 @@ describe('#Validate PIN', () => {
     cb.validatePin(null, null, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Provided ID is invalid')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -388,7 +388,7 @@ describe('#Validate PIN', () => {
     cb.validatePin('', null, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Provided ID is invalid')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -397,7 +397,7 @@ describe('#Validate PIN', () => {
     cb.validatePin('', '', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Provided ID is invalid')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -406,7 +406,7 @@ describe('#Validate PIN', () => {
     cb.validatePin({}, {}, (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
-      response.should.equal('Provided ID is invalid')
+      response.should.equal('Invalid request payload')
       done();
     });
   });
@@ -431,7 +431,7 @@ describe('#Validate PIN', () => {
       (CHECKMOBI_SMS_ID === 'YOUR_CHECKMOBI_SMS_ID')
     ) { return done(); }
 
-    cb.validatePin(CHECKMOBI_SMS_ID, '68768', (error, response) => {
+    cb.validatePin('SMS-BD34D432-3E3B-4EF3-97B5-A4417340BB49', '68768', (error, response) => {
       error.should.equal(true);
       response.should.be.a('string');
       response.should.equal('Resource cannot be found')
