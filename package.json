@@ -1,14 +1,14 @@
 {
   "name": "omrs-checkmobi",
   "version": "1.0.2",
-  "description": "Checkmobi NPM module",
+  "description": "Checkmobi NPM module. Modified to bypass issue with E164 validation and fix broken tests",
   "main": "index.js",
   "scripts": {
     "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/aakashjain/omrs-checkmobi.git"
+    "url": "git://github.com/WiFire/omrs-checkmobi.git"
   },
   "keywords": [
     "checkmobi",

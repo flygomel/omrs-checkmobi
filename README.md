@@ -1,8 +1,7 @@
 # omrs-checkmobi
 
-Checkmobi NPM module
+Checkmobi NPM module. Modified to bypass issue with E164 validation and fix broken tests
 
-[![Build Status](https://travis-ci.org/omrsmeh/omrs-checkmobi.svg?branch=master)](https://travis-ci.org/omrsmeh/omrs-checkmobi)
 
 ## Installation
 
